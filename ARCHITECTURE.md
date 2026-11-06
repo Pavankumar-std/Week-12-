@@ -1,0 +1,1 @@
+# Architecture\nBrowser (React + Socket.IO client) connects to Express + Socket.IO using REST and WebSocket events. Express applies Helmet, CORS, rate limiting and validation. Multer forwards optional media to Cloudinary. A database for users/posts/messages is a future extension. Authenticate sockets and authorize room membership before production.

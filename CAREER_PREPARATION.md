@@ -1,0 +1,1 @@
+# Career preparation\nPrepare to explain REST vs WebSockets, Socket.IO rooms, file upload flow, validation, rate limiting, testing, CI and environment variables. Keep README clear, add genuine screenshots, tailor a one-page resume, and list only skills you can demonstrate.

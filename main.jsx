@@ -1,0 +1,8 @@
+import React,{useEffect,useState} from 'react';
+import{createRoot}from'react-dom/client';import{io}from'socket.io-client';import'./style.css';
+function App(){
+ const[socket,setSocket]=useState(null),[messages,setMessages]=useState([]),[content,setContent]=useState(''),[status,setStatus]=useState('Connecting…');
+ useEffect(()=>{const s=io(import.meta.env.VITE_API_URL||'http://localhost:5000');s.on('connect',()=>{setStatus('Connected');s.emit('join-chat','demo-room')});s.on('disconnect',()=>setStatus('Disconnected'));s.on('new-message',m=>setMessages(p=>[...p,m]));s.on('notification',n=>console.info(n));setSocket(s);return()=>s.disconnect()},[]);
+ function send(e){e.preventDefault();if(!content.trim()||!socket)return;const m={chatId:'demo-room',content,sender:'Demo User',receiverId:'demo-user'};socket.emit('send-message',m);setMessages(p=>[...p,{...m,timestamp:new Date().toISOString()}]);setContent('')}
+ return <main><header><div><small>WEEK 12 PROJECT</small><h1>Connect</h1><p>Advanced Social Media Platform · Real-time chat demo</p></div><span>{status}</span></header><section><h2>Community chat</h2><p>Open this page in two tabs to test real-time messaging.</p><div className="messages">{messages.map((m,i)=><article key={i}><b>{m.sender}</b><p>{m.content}</p><small>{new Date(m.timestamp).toLocaleTimeString()}</small></article>)}</div><form onSubmit={send}><input value={content} onChange={e=>setContent(e.target.value)} placeholder="Write a message…" maxLength="2000"/><button>Send</button></form></section><footer>Demo only · Add authentication and database persistence before production use.</footer></main>}
+createRoot(document.getElementById('root')).render(<App/>);

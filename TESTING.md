@@ -1,0 +1,1 @@
+# Testing\nRun `cd backend && npm install && npm test`. Included tests cover health and caption validation. Manual: open two tabs, test chat, stop server and verify disconnect, configure Cloudinary and test allowed/blocked files and 10 MB limit. Capture genuine screenshots and test output; do not fabricate evidence.

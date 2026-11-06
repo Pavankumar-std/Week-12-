@@ -1,0 +1,1 @@
+# Deployment checklist\nDeploy frontend and backend separately; configure FRONTEND_URL and Cloudinary secrets in hosting settings; enable HTTPS; verify CORS and health endpoint; add database persistence, backups, monitoring and logs. GitHub Actions currently runs tests only; automatic production deployment is not configured.

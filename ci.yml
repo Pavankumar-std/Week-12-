@@ -1,0 +1,1 @@
+name: Week 12 CI\non:\n  push:\n    branches: [main, master]\n  pull_request:\njobs:\n  backend-tests:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n      - uses: actions/setup-node@v4\n        with:\n          node-version: 20\n      - run: cd backend && npm install\n      - run: cd backend && npm test\n

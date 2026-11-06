@@ -1,0 +1,1 @@
+services:\n  backend:\n    build:\n      context: ..\n      dockerfile: docker/Dockerfile.backend\n    ports:\n      - '5000:5000'\n    env_file:\n      - ../backend/.env\n
